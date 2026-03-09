@@ -249,8 +249,7 @@ export class DocumentIntelligenceAgent {
   private async handleSystemFailure(
     documentId: string,
     loanId: string,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    db: any
+    db: ReturnType<typeof createServiceRoleClient>
   ): Promise<void> {
     await db.from('uploaded_documents').update({
       document_state: UploadedDocumentState.NeedsHumanReview,
